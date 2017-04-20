@@ -17,7 +17,7 @@ function progress(timeleft, timetotal, $element) {
 	$element.find('div').animate({width: progressBarWidth}, 0, 'linear');
 	
 	if (timeleft < 121 && timeleft > 119) {
-		notify("Get ready!", {body: "A " + size + " compound will be available in ~ 2 minutes, in" + loc});
+		notify("Get ready!", {body: "A " + size + " outpost will be available in 2 minutes, in" + loc});
 	}
 	else if (timeleft > 0) {
 		setTimeout(function() {
@@ -36,7 +36,7 @@ function progress(timeleft, timetotal, $element) {
 		var size = $element.prev()[0].id;
 		$element.prev()[0].disabled = false;
 		
-		notify("Ding!", {body: "A " + size + " compound should be available in " + loc});
+		notify("Ding!", {body: "A " + size + " outpost should be available in " + loc});
 	}
 }
 
