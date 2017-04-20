@@ -61,7 +61,7 @@ function createSection($element) {
 		button.setAttribute("id", (i === 0) ? "novice" : ((i === 1) ? "small" : ((i === 2) ? "medium" : "large")));
 		button.setAttribute("type", "button");
 		button.setAttribute("class", "btn btn-warning btn-block timer-button");
-		button.setAttribute("onClick", "startCount(1740, 1740, $(this))");
+		button.setAttribute("onClick", "startCount(1800, 1800, $(this))");
 		button.innerHTML = "Completed";
 		
 		// Assign shit to bar container
