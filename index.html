@@ -20,6 +20,10 @@
 				height: 30px;
 			}
 			
+			#button-container {
+				text-align: center;
+			}
+			
 			.progress {
     			position: relative;
 			}
@@ -30,14 +34,29 @@
 			    display: block;
 			    width: 100%;
 			    color: white
-			}q
+			}
 			
 			.timer-button {
 				
 			}
 			
 			.create-button {
-				
+				width: 100px;
+				height: 40px;
+				margin: auto;
+				display: inline-block;
+			}
+			
+			.reset-button {
+				width: 100px;
+				height: 40px;
+				margin: auto;
+				margin-top: 0px;
+				display: inline-block;
+			}
+			
+			.btn-block.btn-block {
+				margin-top: 0px;
 			}
 		</style>
 		
@@ -56,7 +75,10 @@
 			</div>
 			
 			<div class="row">
-				<button id="create-row" type="button" class="btn btn-info btn-block create-button" style="width: 100px; margin: auto;">Add timers</button>
+				<div id="button-container">
+					<button id="create-row" type="button" class="btn btn-info btn-block create-button">Add timers</button>
+					<button id="reset" type="button" class="btn btn-info btn-block reset-button">Reset timers</button>
+				</div>
 				<br>
 				<div class="col-md-8">
 					<table class="table table-striped table-hover">
@@ -73,28 +95,28 @@
 									<input id="system" type="form-control" placeholder="Enter system name here">
 								</td>
 								<td>
-									<button id="novice" type="button" class="btn btn-warning btn-block" onClick="startCount(1800, 1800, $(this))">Completed</button>
+									<button id="novice" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1800, 1800, $(this))">Start</button>
 									<div id="progressBar" class="progress">
 										<div class="progress-bar progress-bar-info" style="width: 0%"></div>
 										<span></span>
 									</div>
 								</td>
 								<td>
-									<button id="small" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1800, 1800, $(this))">Completed</button>
+									<button id="small" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1800, 1800, $(this))">Start</button>
 									<div id="progressBar" class="progress">
 										<div class="progress-bar progress-bar-info" style="width: 0%"></div>
 										<span></span>
 									</div>
 								</td>
 								<td>
-									<button id="medium" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1800, 1800, $(this))">Completed</button>
+									<button id="medium" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1800, 1800, $(this))">Start</button>
 									<div id="progressBar" class="progress">
 										<div class="progress-bar progress-bar-info" style="width: 0%"></div>
 										<span></span>
 									</div>
 								</td>
 								<td>
-									<button id="large" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1800, 1800, $(this))">Completed</button>
+									<button id="large" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1800, 1800, $(this))">Start</button>
 									<div id="progressBar" class="progress">
 										<div class="progress-bar progress-bar-info" style="width: 0%"></div>
 										<span></span>

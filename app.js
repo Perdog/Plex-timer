@@ -1,3 +1,4 @@
+var resetAll = false;
 
 function startCount(left, total, $el) {
 	if ($el[0].disabled == 'undefined' || $el[0].disabled == null) {
@@ -20,14 +21,16 @@ function progress(timeleft, timetotal, $element) {
 		notify("Get ready!", {body: "A " + size + " outpost will be available in 2 minutes, in" + loc});
 	}
 	else if (timeleft > 0) {
-		setTimeout(function() {
-			progress(timeleft - 1, timetotal, $element);
-		}, 1000);
-		
-		var m = Math.floor(timeleft/60);
-		var timeRemaining = ((m > 0) ? m + "M " : "") + Math.floor(timeleft%60) + "S";
-		
-		$element.find('span').text(timeRemaining);
+		if (!resetAll) {
+			setTimeout(function() {
+				progress(timeleft - 1, timetotal, $element);
+			}, 1000);
+			
+			var m = Math.floor(timeleft/60);
+			var timeRemaining = ((m > 0) ? m + "M " : "") + Math.floor(timeleft%60) + "S";
+			
+			$element.find('span').text(timeRemaining);
+		}
 	} else {
 		$element.find('div').animate({width: 0}, 1, 'linear');
 		$element.find('span').text("Spawned");
@@ -37,6 +40,11 @@ function progress(timeleft, timetotal, $element) {
 		$element.prev()[0].disabled = false;
 		
 		notify("Ding!", {body: "A " + size + " outpost should be available in " + loc});
+	}
+	
+	if (resetAll) {
+		$element.find('div').animate({width: 0}, 1, 'linear');
+		$element.find('span').text("Reset");
 	}
 }
 
@@ -62,7 +70,7 @@ function createSection($element) {
 		button.setAttribute("type", "button");
 		button.setAttribute("class", "btn btn-warning btn-block timer-button");
 		button.setAttribute("onClick", "startCount(1800, 1800, $(this))");
-		button.innerHTML = "Completed";
+		button.innerHTML = "Start";
 		
 		// Assign shit to bar container
 		barCont.setAttribute("id", "progressBar");
@@ -87,9 +95,31 @@ function createSection($element) {
 	table.appendChild(newRow);
 }
 
+function resetTimers(ra) {
+	var b = document.getElementsByClassName("timer-button");
+	resetAll = ra;
+	
+	for (var i = 0; i < b.length; i++)
+	{
+		if (b[i].disabled == 'undefined' || b[i].disabled == null) {
+			b[i].disabled = false;
+		}
+		
+		b[i].disabled = resetAll;
+	}
+	
+	if (resetAll) {
+		setTimeout(function() {
+					resetTimers(false);
+				}, 2500);
+		
+		console.log("Reseting timers");
+	}
+}
+
 function CheckPerms() {
 	if (!("Notification" in window)) {
-		console.log("Notifications not possible on this browser");
+		console.log("Notifications not possible with this browser");
 	} else if (Notification.permission === "default") {
 		Notification.requestPermission(function (perm) {
 			if (perm === "granted") {
@@ -120,4 +150,8 @@ $(document).ready(function() {
 
 $('.create-button').click(function() {
 	createSection($(this));
+});
+
+$('.reset-button').click(function() {
+	resetTimers(true);
 });
