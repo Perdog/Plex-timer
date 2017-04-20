@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+	<head>
+		<title>Plex Timer</title>
+		
+    	<!-- JQuery stuff -->
+    	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+		
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="./bootstrap.css">
+		
+		<style type="text/css">
+			#progressBar {
+				width: 200px;
+				height: 30px;
+			}
+			
+			.progress {
+    			position: relative;
+			}
+
+			.progress span {
+			    position: absolute;
+			    text-align: center;
+			    display: block;
+			    width: 100%;
+			    color: white
+			}q
+			
+			.timer-button {
+				
+			}
+			
+			.create-button {
+				
+			}
+		</style>
+		
+	</head>
+	
+	<body>
+		<br>
+		<div id="dynamic-container" class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="jumbotron">
+						<h2>Plex Timer <small>Help track outpost spawn times. Not for use with facilities or strongholds.</small></h2>
+						<h5>This webpage will ask for permission to show notifications if your browser supports them. By allowing these, a little popup window will appear when a timer completes, so you don't miss a spawn time because you didn't have the window open.</h5>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<button id="create-row" type="button" class="btn btn-info btn-block create-button" style="width: 100px; margin: auto;">Add timers</button>
+				<br>
+				<div class="col-md-8">
+					<table class="table table-striped table-hover">
+						<thead id="table-parent">
+							<tr>
+								<th style="text-align: center">System name</th>
+								<th style="text-align: center">Novice</th>
+								<th style="text-align: center">Small</th>
+								<th style="text-align: center">Medium</th>
+								<th style="text-align: center">Large</th>
+							</tr>
+							<tr>
+								<td>
+									<input id="system" type="form-control" placeholder="Enter system name here">
+								</td>
+								<td>
+									<button id="novice" type="button" class="btn btn-warning btn-block" onClick="startCount(1740, 1740, $(this))">Completed</button>
+									<div id="progressBar" class="progress">
+										<div class="progress-bar progress-bar-info" style="width: 0%"></div>
+										<span></span>
+									</div>
+								</td>
+								<td>
+									<button id="small" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1740, 1740, $(this))">Completed</button>
+									<div id="progressBar" class="progress">
+										<div class="progress-bar progress-bar-info" style="width: 0%"></div>
+										<span></span>
+									</div>
+								</td>
+								<td>
+									<button id="medium" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1740, 1740, $(this))">Completed</button>
+									<div id="progressBar" class="progress">
+										<div class="progress-bar progress-bar-info" style="width: 0%"></div>
+										<span></span>
+									</div>
+								</td>
+								<td>
+									<button id="large" type="button" class="btn btn-warning btn-block timer-button" onClick="startCount(1740, 1740, $(this))">Completed</button>
+									<div id="progressBar" class="progress">
+										<div class="progress-bar progress-bar-info" style="width: 0%"></div>
+										<span></span>
+									</div>
+								</td>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		
+    	<script type="text/javascript" src="./app.js"></script>
+		
+	</body>
+	
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
