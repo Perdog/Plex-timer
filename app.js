@@ -19,6 +19,9 @@ function progress(timeleft, timetotal, $element) {
 	
 	if (timeleft < 121 && timeleft > 119) {
 		notify("Get ready!", {body: "A " + size + " outpost will be available in 2 minutes, in" + loc});
+			setTimeout(function() {
+				progress(timeleft - 1, timetotal, $element);
+			}, 1000);
 	}
 	else if (timeleft > 0) {
 		if (!resetAll) {
