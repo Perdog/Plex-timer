@@ -18,10 +18,13 @@ function progress(timeleft, timetotal, $element) {
 	$element.find('div').animate({width: progressBarWidth}, 0, 'linear');
 	
 	if (timeleft < 121 && timeleft > 119) {
+		var loc = $element.parent().parent()["0"].firstElementChild.firstElementChild.value;//.find('input');
+		var size = $element.prev()[0].id;
+		
 		notify("Get ready!", {body: "A " + size + " outpost will be available in 2 minutes, in" + loc});
-			setTimeout(function() {
-				progress(timeleft - 1, timetotal, $element);
-			}, 1000);
+		setTimeout(function() {
+					progress(timeleft - 1, timetotal, $element);
+				}, 1000);
 	}
 	else if (timeleft > 0) {
 		if (!resetAll) {
