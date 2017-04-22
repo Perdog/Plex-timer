@@ -1,3 +1,4 @@
+var version = "1.0.1"
 var resetAll = false;
 
 function startCount(left, total, $el) {
@@ -162,6 +163,7 @@ function notify(title, options) {
 
 $(document).ready(function() {
 	CheckPerms();
+	console.log("loaded " + version);
 });
 
 $('.create-button').click(function() {
