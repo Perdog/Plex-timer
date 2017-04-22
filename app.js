@@ -151,6 +151,7 @@ function notify(title, options) {
 		icon: options.icon || './notify.png'
 	}
 	var n = new Notification(title, o);
+	console.log(n);
 	
 	setTimeout(function(){n.close()},10000);
 	n.onclick=function(){
