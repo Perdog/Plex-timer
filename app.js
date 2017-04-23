@@ -163,7 +163,7 @@ function notify(title, options) {
 
 $(document).ready(function() {
 	CheckPerms();
-	console.log("loaded " + version);
+	console.log("Plex Timer v" + version);
 });
 
 $('.create-button').click(function() {
