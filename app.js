@@ -13,52 +13,52 @@ function startCount(left, total, $el) {
 }
 
 
-function progress(timeleft, timetotal, $element) {
+function progress(timeleft, timetotal, $el) {
 	
-	var progressBarWidth = timeleft * $element.width() / timetotal;
-	$element.find('div').animate({width: progressBarWidth}, 0, 'linear');
+	var progressBarWidth = timeleft * $el.width() / timetotal;
+	$el.find('div').animate({width: progressBarWidth}, 0, 'linear');
 	
 	if (timeleft < 121 && timeleft > 119 && !resetAll) {		
 		setTimeout(function() {
-			progress(timeleft - 1, timetotal, $element);
+			progress(timeleft - 1, timetotal, $el);
 		}, 1000);
 			
 		var m = Math.floor(timeleft/60);
 		var timeRemaining = ((m > 0) ? m + "M " : "") + Math.floor(timeleft%60) + "S";
-		$element.find('span').text(timeRemaining);
+		$el.find('span').text(timeRemaining);
 		
-		var loc = $element.parent().parent()["0"].firstElementChild.firstElementChild.value;//.find('input');
-		var size = $element.prev()[0].id;
-		notify("Get ready!", {body: "A " + size + " outpost will be available in 2 minutes, in" + loc});
+		var loc = $el.parent().parent()["0"].firstElementChild.firstElementChild.value;//.find('input');
+		var size = $el.prev()[0].id;
+		notify("Get ready!", {body: "A " + size + " outpost will be available in 2 minutes, in " + loc});
 	}
 	else if (timeleft > 0) {
 		if (!resetAll) {
 			setTimeout(function() {
-				progress(timeleft - 1, timetotal, $element);
+				progress(timeleft - 1, timetotal, $el);
 			}, 1000);
 			
 			var m = Math.floor(timeleft/60);
 			var timeRemaining = ((m > 0) ? m + "M " : "") + Math.floor(timeleft%60) + "S";
-			$element.find('span').text(timeRemaining);
+			$el.find('span').text(timeRemaining);
 		}
 	} else {
-		$element.find('div').animate({width: 0}, 1, 'linear');
-		$element.find('span').text("Spawned");
+		$el.find('div').animate({width: 0}, 1, 'linear');
+		$el.find('span').text("Spawned");
 		
-		var loc = $element.parent().parent()["0"].firstElementChild.firstElementChild.value;//.find('input');
-		var size = $element.prev()[0].id;
-		$element.prev()[0].disabled = false;
+		var loc = $el.parent().parent()["0"].firstElementChild.firstElementChild.value;//.find('input');
+		var size = $el.prev()[0].id;
+		$el.prev()[0].disabled = false;
 		
 		notify("Ding!", {body: "A " + size + " outpost should be available in " + loc});
 	}
 	
 	if (resetAll) {
-		$element.find('div').animate({width: 0}, 1, 'linear');
-		$element.find('span').text("Reset");
+		$el.find('div').animate({width: 0}, 1, 'linear');
+		$el.find('span').text("Reset");
 	}
 }
 
-function createSection($element) {
+function createSection($el) {
 	var newRow = document.createElement("TR");
 	var newBox = document.createElement("TD");
 	var sysName = document.createElement("INPUT");
@@ -152,10 +152,11 @@ function notify(title, options) {
 		icon: options.icon || './notify.png'
 	}
 	var n = new Notification(title, o);
+	console.log("Attempting to notify the user with:");
 	console.log(n);
 	
 	setTimeout(function(){n.close()},10000);
-	n.onclick=function(){
+	n.onclick = function() {
 		n.close();
 		window.focus();
 	};
