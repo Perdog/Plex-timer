@@ -23,7 +23,7 @@
 			}
 			
 			#progressBar {
-				width: 200px;
+				width: 100px;
 				height: 30px;
 			}
 			
@@ -44,8 +44,8 @@
 			}
 			
 			.timer-button {
-				width: 100%;
-				height: 50%;
+				width: 100px;
+				height: 40px;
 				margin: auto;
 				display: inline-block;
 			}
@@ -74,7 +74,7 @@
 	<body>
 		<br>
 		<div id="dynamic-container" class="container">
-			<div class="row" style="width: 100%">
+			<div class="row">
 				<div class="col-md-12">
 					<div class="jumbotron">
 						<h2>Plex Timer <small>Help track outpost spawn times. Not for use with facilities or strongholds.</small></h2>
@@ -83,14 +83,14 @@
 				</div>
 			</div>
 			
-			<div class="row" style="width: 100%">
+			<div class="row">
 				<div id="button-container">
 					<button id="create-row" type="button" class="btn btn-info btn-block create-button">Add</button>
 					<button id="reset" type="button" class="btn btn-info btn-block reset-button">Reset</button>
 				</div>
 				<br>
 				<div class="col-md-8">
-					<table class="table table-striped table-hover">
+					<table class="table table-striped table-hover" style="margin: auto;display: inline-block;">
 						<thead id="table-parent">
 							<tr>
 								<th style="text-align: center">System name</th>
