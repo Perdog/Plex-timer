@@ -27,7 +27,7 @@ function progress(timeleft, timetotal, $el) {
 		var timeRemaining = ((m > 0) ? m + "M " : "") + Math.floor(timeleft%60) + "S";
 		$el.find('span').text(timeRemaining);
 		
-		var loc = $el.parent().parent()["0"].firstElementChild.firstElementChild.value;//.find('input');
+		var loc = $el.parent().parent()["0"].firstElementChild.firstElementChild.value;
 		var size = $el.prev()[0].id;
 		notify("Get ready!", {body: "A " + size + " outpost will be available in 2 minutes, in " + loc});
 	}
